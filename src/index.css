@@ -7,7 +7,7 @@
   margin: 20px 0;
 }
 .header .nav {
-  background-color: black;
+  background-color: whitesmoke;
   height: 50px;
   list-style: none;
   display: flex;
@@ -23,13 +23,17 @@
 }
 
 .header .nav li a {
-  color: white;
+  color: black;
   font-size: 16px;
   text-decoration: none;
 }
+.header .nav .active{
+  color: #bf2032;
+  text-decoration: overline ;
+  border-bottom: solid #bf2032;
+}
 
 .login {
-  color: white;
   font-size: 16px;
   margin-left: auto;
 }
