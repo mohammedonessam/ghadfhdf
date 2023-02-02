@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
 
-const initialState = { records:[], loading: true, error:null };
+const initialState = { records:[], loading: false, error:null };
 
 export const fetchPosts = createAsyncThunk(
   "posts/fetchPosts",
