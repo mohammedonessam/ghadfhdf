@@ -1,7 +1,7 @@
 import React from "react";
 
 const Loading = ({loading, error, children}) => {
-  let elementType=children.type.render.displayName;
+  let elementType=children?.type?.render?.displayName;
 
   const renderHandler = ()=>{
     if (elementType === "Button") {
