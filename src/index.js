@@ -13,6 +13,17 @@ import Details from './pages/Details';
 import Index from './pages/Index';
 import ErrorPage from './pages/ErrorPage';
 import store from './state/index';
+
+
+const postParamsHandler=({params})=>{
+  if(isNaN(params.id)){
+    throw new Response("Bad Request",{
+      statusText:"please make sure to insert intiger ID",
+      status: 400,
+    });
+  };
+};
+
 const router = createBrowserRouter([
   {
     path:"/",
@@ -25,26 +36,12 @@ const router = createBrowserRouter([
       {
         path:"post/:id",
         element:<Details/>,
-        loader:({params})=>{
-          if(isNaN(params.id)){
-            throw new Response("Bad Request",{
-              statusText:"please make sure to insert intiger ID",
-              status: 400,
-            })
-          }
-        }
+        loader: postParamsHandler,
       },
       {
-        path:"post/:id/edit",
+        path:"post/edit/:id",
         element:<Edit/>,
-        loader:({params})=>{
-          if(isNaN(params.id)){
-            throw new Response("Bad Request",{
-              statusText:"please make sure to insert intiger ID",
-              status: 400,
-            })
-          }
-        }
+        loader:postParamsHandler,
       },
     ]
   }
