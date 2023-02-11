@@ -1,7 +1,7 @@
 import {useEffect} from 'react';
 import PostList from '../components/PostList';
 import {useDispatch,useSelector} from "react-redux";
-import {fetchPosts, deletePost} from "../state/postSlice";
+import {fetchPosts, deletePost} from "../store/postSlice";
 import { useCallback } from 'react';
 import Loading from './../components/Loading';
 
@@ -24,5 +24,4 @@ const Index = () => {
         </Loading>
     )
 };
-
 export default Index;

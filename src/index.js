@@ -12,7 +12,7 @@ import Edit from './pages/Edit';
 import Details from './pages/Details';
 import Index from './pages/Index';
 import ErrorPage from './pages/ErrorPage';
-import store from './state/index';
+import store from './store/index';
 
 
 const postParamsHandler=({params})=>{

@@ -3,7 +3,7 @@ import { Form, Button } from "react-bootstrap";
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from "react-router-dom";
 import Loading from "../components/Loading";
-import { insertPost } from "../state/postSlice";
+import { insertPost } from "../store/postSlice";
 
 
 

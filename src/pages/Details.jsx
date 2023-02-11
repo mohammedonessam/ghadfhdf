@@ -2,11 +2,22 @@ import usePostDetails from '../hooks/use-post-details';
 import Loading from './../components/Loading';
 import { Button } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from 'react-redux';
+import { useEffect } from 'react';
+import { cleanRecord } from '../store/postSlice';
 
 const Details = () => {
     const navigate= useNavigate();
+    const dispatch= useDispatch();
+
     const {loading, error, record} =  usePostDetails();
-    console.log(record);
+
+    useEffect(()=>{
+        return ()=>{
+            dispatch(cleanRecord());
+        };
+    },[dispatch]);
+
     return (
         <Loading loading={loading} error={error}>
             <>

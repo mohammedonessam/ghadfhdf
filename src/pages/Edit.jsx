@@ -4,23 +4,32 @@ import { Form, Button } from "react-bootstrap";
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { editPost } from './../state/postSlice';
+import { cleanRecord, editPost } from '../store/postSlice';
 
 
 const Edit = () => {
     const {loading, error, record} =  usePostDetails();
     const [title, setTitle]=useState("");
     const [author, setAuthor]= useState("");
+    console.log(record);
+
+    const navigate = useNavigate();
+    const dispatch= useDispatch();
 
     useEffect(()=>{
         if (record && !title && !author) {
             setTitle(record.title);
             setAuthor(record.author);
         }
-    },[record, title, author]);
+    },[record]);
 
-    const navigate = useNavigate();
-    const dispatch= useDispatch();
+    useEffect(()=>{
+        return ()=>{
+            dispatch(cleanRecord());
+        };
+    },[dispatch]);
+
+    
 
     const formHandler= (e)=>{
         e.preventDefault();
