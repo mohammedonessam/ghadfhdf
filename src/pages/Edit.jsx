@@ -5,6 +5,8 @@ import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { cleanRecord, editPost } from '../store/postSlice';
+import GoBackBtn from './../components/GoBackBtn';
+import WithGaurd from './../utl/withGaurd';
 
 
 const Edit = () => {
@@ -59,9 +61,10 @@ const Edit = () => {
                 <Loading loading={loading} error={error}>
                     <Button variant="primary" type="submit">Submit</Button>
                 </Loading>
+                <GoBackBtn/>
             </Form>
         </Loading>
     );
 }
 
-export default Edit;
+export default WithGaurd(Edit);

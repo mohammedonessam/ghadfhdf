@@ -2,8 +2,10 @@ import { useState } from "react";
 import { Form, Button } from "react-bootstrap";
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from "react-router-dom";
+import GoBackBtn from "../components/GoBackBtn";
 import Loading from "../components/Loading";
 import { insertPost } from "../store/postSlice";
+import WithGaurd from "../utl/withGaurd";
 
 
 
@@ -43,8 +45,9 @@ const AddPost = () => {
             <Loading loading={loading} error={error}>
                 <Button variant="primary" type="submit">Submit</Button>
             </Loading>
+            <GoBackBtn/>
         </Form>
     );
 }
 
-export default AddPost;
+export default WithGaurd(AddPost);

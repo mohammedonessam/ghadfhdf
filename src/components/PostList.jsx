@@ -2,7 +2,7 @@ import { Table } from "react-bootstrap";
 import PostListItems from "./PostListItems";
 import { memo } from 'react';
 
-const PostList = ({data, deleteRecord}) => {
+const PostList = ({data, deleteRecord,isLoggedIn}) => {
   return (
     <Table striped bordered hover>
       <thead>
@@ -14,7 +14,7 @@ const PostList = ({data, deleteRecord}) => {
         </tr>
       </thead>
       <tbody>
-          <PostListItems data={data} deleteRecord={deleteRecord}/>
+          <PostListItems data={data} deleteRecord={deleteRecord} isLoggedIn={isLoggedIn}/>
       </tbody>
     </Table>
   );
