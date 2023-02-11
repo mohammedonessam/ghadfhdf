@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Suspense } from "react";
 import ReactDOM from "react-dom/client";
 
 import "./index.css";
@@ -7,13 +7,14 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { Provider } from "react-redux";
 import RootLayout from './pages/RootLayout';
-import AddPost from './pages/Add';
-import Edit from './pages/Edit';
-import Details from './pages/Details';
 import Index from './pages/Index';
 import ErrorPage from './pages/ErrorPage';
 import store from './store/index';
+import Loading from "./components/Loading";
 
+const AddPost = React.lazy(() => import('./pages/Add'));
+const Edit = React.lazy(() => import('./pages/Edit'));
+const Details = React.lazy(() => import('./pages/Details'));
 
 const postParamsHandler=({params})=>{
   if(isNaN(params.id)){
@@ -32,15 +33,27 @@ const router = createBrowserRouter([
     children:[
       {index:true,element:<Index/>},
       {path:"post",element:<Index/>},
-      {path:"post/add",element:<AddPost/>},
+      {
+        path:"post/add",
+        element:
+          <Suspense fallback={<Loading/>}>
+            <AddPost/>
+          </Suspense>,
+      },
       {
         path:"post/:id",
-        element:<Details/>,
+        element:
+        <Suspense fallback={<Loading/>}>
+          <Details/>
+        </Suspense> ,
         loader: postParamsHandler,
       },
       {
         path:"post/edit/:id",
-        element:<Edit/>,
+        element:
+        <Suspense fallback={<Loading/>}>
+          <Edit/>
+        </Suspense>,
         loader:postParamsHandler,
       },
     ]
