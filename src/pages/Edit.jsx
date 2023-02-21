@@ -10,9 +10,6 @@ import WithGaurd from './../utl/withGaurd';
 import { useFormik } from "formik";
 import { formSchema } from '../utl/validationSchema';
 
-
-
-
 const Edit = () => {
     const {loading, error, record} =  usePostDetails();
     
